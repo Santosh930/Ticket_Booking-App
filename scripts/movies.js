@@ -2,8 +2,12 @@
 // On clicking book now store the selected movie in localstorage as key "movie"
 // so that you can retrive it on checkout.html page
 // console.log(3);
+let p =  localStorage.getItem("amount") || 0; 
+let w = document.getElementById("wallet")
+w.innerText=p;
 
 let id;
+
     let movies_div=document.getElementById("movies");
 async function searchMovies(){
 
@@ -39,12 +43,13 @@ return movie;
             let img=document.createElement("img");
             img.src=el.Poster
             let btn=document.createElement("button");
-            btn.innerText="Book Now"
+            btn.innerText="Book Now";
             btn.setAttribute("class","book_now");
-            btn.addEventListener("click",function(){
-                Byfunction(data);
-
-            });
+            btn.onclick = function addToList(){
+                localStorage.setItem("movie", JSON.stringify(el));
+                window.location.href="checkout.html";
+                 
+            }
             
 
             
